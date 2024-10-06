@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Масив і операції з ним</title>
+</head>
+<body>
+<script>
+function generateRandomArray(length, maxValue) {
+  const array = [];
+  for (let i = 0; i < length; i++) {
+    array.push(Math.floor(Math.random() * maxValue) + 1);
+  }
+  return array;
+}
+function displayArray(array) {
+  document.write(`Масив: ${array.join(" ")}<br>`);
+}
+function findMinElementIndex(array) {
+  let minIndex = 0;
+  for (let i = 1; i < array.length; i++) {
+    if (array[i] < array[minIndex]) {
+      minIndex = i;
+    }
+  }
+  return minIndex;
+}
+function replaceMinWith3N(array, minIndex) {
+  const minValue = array[minIndex];
+  const lastValue = array[array.length - 1];
+  array[array.length - 1] = minValue;
+  array[minIndex] = 3 * lastValue;
+}
+const arrayLength = 15;
+const maxValue = 50;
+const myArray = generateRandomArray(arrayLength, maxValue);
+displayArray(myArray);
+const minIndex = findMinElementIndex(myArray);
+replaceMinWith3N(myArray, minIndex);
+displayArray(myArray);
+</script>
+</body>
+</html>
